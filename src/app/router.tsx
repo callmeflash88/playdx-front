@@ -23,11 +23,12 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "dashboard", element: <DashboardPage /> },
+      { path: "", element: <DashboardPage /> },
       { path: "surveys", element: <SurveysPage /> },
       { path: "users", element: <UsersPage /> },
       //   { path: "surveys", element: <SurveysPage /> },
       // добавь остальные страницы по мере разработки
     ],
   },
+  { path: "*", element: <div>404</div> },
 ]);
