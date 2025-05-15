@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Modal from "../../../shared/ui/Modal/ui";
 import { useModal } from "../model/useModal";
 import { Button } from "../../../shared/ui/Button";
 import { ButtonVariants } from "../../../shared/ui/Button/types";

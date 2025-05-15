@@ -1,6 +1,6 @@
 // components/TextInput.tsx
-import React, { type FC, useMemo } from "react";
-import InputMask from "react-input-mask";
+import { type FC, useMemo } from "react";
+
 import cn from "classnames";
 import { useFormContext } from "react-hook-form";
 import { TEXT_INPUT_STYLE_VARIANTS } from "./constants";
@@ -17,7 +17,7 @@ export const TextInput: FC<IFormField> = ({
   variant = FormFieldVariants.PRIMARY,
   placeholder,
   isTextArea = false,
-  type = "text",
+
   mask,
   rows,
   maxLength,

@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
-import type { Survey } from "../../../entities/surveys/model/types";
+import { useState } from "react";
 
 export const useSurveys = () => {
   //   const [surveys, setSurveys] = useState<Survey[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const [isLoading] = useState(true);
+  const [error] = useState<Error | null>(null);
 
   const surveys = [
     {

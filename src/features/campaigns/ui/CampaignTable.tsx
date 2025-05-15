@@ -6,9 +6,6 @@ import {
 import { Table } from "../../../shared/ui/Table/Table";
 import { TableHeader } from "../../../shared/ui/Table/TabeHeader";
 import { TableBody } from "../../../shared/ui/Table/TableBody";
-import { Button } from "../../../shared/ui/Button";
-import { ButtonVariants } from "../../../shared/ui/Button/types";
-import { Sizes } from "../../../shared/types/sizes";
 import { NewCampaignButton } from "./NewCampaignButton";
 
 interface Props {
@@ -16,6 +13,9 @@ interface Props {
 }
 
 export const CampaignsTable: FC<Props> = ({ campaigns }) => {
+  if (campaigns) {
+    console.log("Campaigns:", campaigns);
+  }
   const mockCampaigns = [
     {
       title: "Gaming Experience Survey",

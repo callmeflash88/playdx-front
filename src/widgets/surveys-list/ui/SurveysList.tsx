@@ -2,7 +2,7 @@ import { SurveyCard } from "../../../entities/surveys/ui/SurveyCard";
 import { useSurveys } from "../model/useSurveys";
 
 export const SurveysList = () => {
-  const { surveys, isLoading } = useSurveys();
+  const { surveys } = useSurveys();
 
   //   if (isLoading) return <p>Loading...</p>;
 

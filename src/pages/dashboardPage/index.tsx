@@ -5,7 +5,6 @@ import { ViewMode } from "../../features/toggle-view-mode/ model/types";
 import { ViewModeToggle } from "../../features/toggle-view-mode/ui/ViewModeToggle";
 
 import { DashBoardSummary } from "../../widgets/dashboard-summary/ui/DashboardSummary";
-import { MemberTable } from "../../features/member-table/ui/MemberTable";
 import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
 import { DashboardMemberTable } from "../../widgets/dashboard-member-table/ui/DashboardMemberTable";
 

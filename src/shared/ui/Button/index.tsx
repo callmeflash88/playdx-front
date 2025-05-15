@@ -24,7 +24,6 @@ export const Button: FC<Props> = memo(
     variant,
     size,
     type,
-    leaderSize,
     isDisabled,
     onClick,
   }) => {

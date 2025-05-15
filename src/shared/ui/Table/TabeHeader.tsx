@@ -1,4 +1,3 @@
-import { FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 import type { Column } from "./types/types";
 
 interface Props {
