@@ -5,8 +5,9 @@ import { ViewMode } from "../../features/toggle-view-mode/ model/types";
 import { ViewModeToggle } from "../../features/toggle-view-mode/ui/ViewModeToggle";
 
 import { DashBoardSummary } from "../../widgets/dashboard-summary/ui/DashboardSummary";
-import { MemberTable } from "../../widgets/member-table/ui/MemberTable";
+import { MemberTable } from "../../features/member-table/ui/MemberTable";
 import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
+import { DashboardMemberTable } from "../../widgets/dashboard-member-table/ui/DashboardMemberTable";
 
 export const DashboardPage = () => {
   const mode = useToggleViewModeStore((state) => state.mode);
@@ -70,7 +71,7 @@ export const DashboardPage = () => {
 
         {mode === ViewMode.Members && (
           <div className="bg-white shadow rounded-lg overflow-hidden">
-            <MemberTable members={[]} />
+            <DashboardMemberTable />
           </div>
         )}
         {mode === ViewMode.Campaigns && (

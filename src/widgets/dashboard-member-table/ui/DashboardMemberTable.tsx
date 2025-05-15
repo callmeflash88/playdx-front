@@ -1,18 +1,12 @@
 import type { FC } from "react";
-import { Table } from "../../../shared/ui/Table/Table";
-import { TableHeader } from "../../../shared/ui/Table/TabeHeader";
-import { TableBody } from "../../../shared/ui/Table/TableBody";
 import {
   getTableItems,
   MEMBERS_DASHBOARD_COLUMN,
 } from "../constants/constants";
 import type { Row } from "../../../shared/ui/Table/types/types";
+import { MemberTable } from "../../../features/member-table/ui/MemberTable";
 
-interface Props {
-  members: any[];
-}
-
-export const MemberTable: FC<Props> = ({ members }) => {
+export const DashboardMemberTable: FC = () => {
   const mockMembers = [
     {
       id: 1,
@@ -46,12 +40,5 @@ export const MemberTable: FC<Props> = ({ members }) => {
 
   const items = getTableItems(mockMembers) as unknown as Row[];
 
-  return (
-    <>
-      <Table>
-        <TableHeader columns={MEMBERS_DASHBOARD_COLUMN} />{" "}
-        <TableBody items={items} columns={MEMBERS_DASHBOARD_COLUMN} />
-      </Table>
-    </>
-  );
+  return <MemberTable members={items} columns={MEMBERS_DASHBOARD_COLUMN} />;
 };

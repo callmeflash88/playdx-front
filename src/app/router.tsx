@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import { SideBar } from "../widgets/SideBar/SideBar";
 import { DashboardPage } from "../pages/dashboardPage";
 import { SurveysPage } from "../pages/surveys";
+import { UsersPage } from "../pages/users/Users";
 // import { SideBar } from "@widgets/SideBar/SideBar";
 
 const Layout = () => (
@@ -24,7 +25,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "dashboard", element: <DashboardPage /> },
       { path: "surveys", element: <SurveysPage /> },
-      //   { path: "users", element: <UsersPage /> },
+      { path: "users", element: <UsersPage /> },
       //   { path: "surveys", element: <SurveysPage /> },
       // добавь остальные страницы по мере разработки
     ],
