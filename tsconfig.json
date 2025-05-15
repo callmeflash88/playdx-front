@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@widgets/*": ["widgets/*"],
+      "@shared/*": ["shared/*"],
+      "@features/*": ["features/*"],
+      "@entities/*": ["entities/*"],
+      "@pages/*": ["pages/*"]
+    }
+  },
+  "verbatimModuleSyntax": false,
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
