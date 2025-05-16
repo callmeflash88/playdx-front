@@ -2,7 +2,8 @@ import { useModal } from "../model/useModal";
 import { Button } from "../../../shared/ui/Button";
 import { ButtonVariants } from "../../../shared/ui/Button/types";
 import { Sizes } from "../../../shared/types/sizes";
-import { CreateSurveyForm } from "./CreateSurveyForm";
+
+import { CreateCampaignModal } from "../../create-campaigns/ui/CreateCampaignModal";
 
 export const CreateSurveyButton = () => {
   const { isOpen, open, close } = useModal();
@@ -17,7 +18,8 @@ export const CreateSurveyButton = () => {
       >
         New Survey
       </Button>
-      {isOpen && <CreateSurveyForm onClose={close} />}
+      {/* {isOpen && <CreateSurveyForm onClose={close} />} */}
+      {isOpen && <CreateCampaignModal onClose={close} />}
     </>
   );
 };

@@ -15,14 +15,14 @@ export const SurveyCard = ({ survey }: Props) => {
     >
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
-          <h3 className="text-lg font-medium text-gray-900">{survey.name}</h3>
+          <h3 className="text-lg font-medium text-gray-900">{survey.title}</h3>
           <span className="text-lg font-semibold text-gray-900">
-            {survey.point}
+            {survey.reward_value}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm text-gray-500">
-          <span>{survey.code_name}</span>
-          <span className="uppercase">{survey.test}</span>
+          <span>{survey.intellisurvey_id}</span>
+          <span className="uppercase">{survey.points_awarded}</span>
         </div>
       </div>
     </div>
