@@ -1,12 +1,13 @@
 // features/search-members/ui/MemberSearch.tsx
 
 import React from "react";
-import { useSearchMembersStore } from "../model/useSearch";
+
 import { SearchInput } from "../../../shared/ui/SearchInput";
+import { useSearchStore } from "../model/store";
 
 export const MemberSearch: React.FC = () => {
-  const query = useSearchMembersStore((state) => state.query);
-  const setQuery = useSearchMembersStore((state) => state.setQuery);
+  const query = useSearchStore((state) => state.query);
+  const setQuery = useSearchStore((state) => state.setQuery);
 
   return (
     <SearchInput

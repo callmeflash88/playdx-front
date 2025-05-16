@@ -10,8 +10,7 @@ import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
 import { useDashboardViewModel } from "./model/useDashboardViewModel";
 
 export const DashboardPage = () => {
-  const { mode, summaryData, memberInfo, campaignInfo } =
-    useDashboardViewModel();
+  const { mode, summaryData } = useDashboardViewModel();
 
   const renderHeaderControls = () => {
     switch (mode) {
