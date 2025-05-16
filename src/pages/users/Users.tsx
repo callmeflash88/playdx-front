@@ -3,8 +3,8 @@ import { UserMemberTable } from "../../widgets/user-member-table/ui/userMembersT
 export const UsersPage = () => {
   return (
     <div>
-      <h1>Users</h1>
-      <div className="bg-white shadow rounded-lg overflow-hidden">
+      <h1 className="text-2xl font-semibold text-gray-900">Users</h1>
+      <div className="mt-6 bg-white shadow overflow-hidden rounded-lg">
         <UserMemberTable />
       </div>
     </div>
