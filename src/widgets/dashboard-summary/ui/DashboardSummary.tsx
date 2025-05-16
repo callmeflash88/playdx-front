@@ -26,6 +26,8 @@ const getGridColsClass = (cols: number) => {
 export const DashBoardSummary: FC<Props> = ({ data }) => {
   const layout = getGridColsClass(data.length);
 
+  console.log("Data: ", data);
+
   return (
     <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 ${layout} mb-8`}>
       {data.map((item, idx) => (

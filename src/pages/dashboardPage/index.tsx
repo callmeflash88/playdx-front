@@ -7,43 +7,32 @@ import { ViewModeToggle } from "../../features/toggle-view-mode/ui/ViewModeToggl
 import { DashBoardSummary } from "../../widgets/dashboard-summary/ui/DashboardSummary";
 import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
 import { DashboardMemberTable } from "../../widgets/dashboard-member-table/ui/DashboardMemberTable";
+import { useCampaigns } from "../../entities/campaign/model/useCampaigns";
+import { useEffect, useState } from "react";
+import type {
+  CampaignInfo,
+  MemberInfo,
+} from "../../entities/dashboard/model/type";
+import {
+  mapCampaignInfoToSummary,
+  mapMemberInfoToSummary,
+} from "../../shared/lib/mapCampaignInfoToSummary";
 
 export const DashboardPage = () => {
   const mode = useToggleViewModeStore((state) => state.mode);
+  const [campaignInfo, setCampaignsInfo] = useState<CampaignInfo>();
+  const [memberInfo, setMemberInfo] = useState<MemberInfo>();
+  const { data: campaigns } = useCampaigns();
 
-  const mockCampaignsData = [
-    {
-      value: 1232,
-      title: "Valid Completions",
-    },
-    {
-      value: 1232,
-      title: "Points Awarded",
-    },
-    {
-      value: 9480,
-      title: "Points to be Awarded",
-    },
-    {
-      value: 194,
-      title: "Participants",
-    },
-  ];
+  useEffect(() => {
+    if (campaigns) {
+      setCampaignsInfo(campaigns.campaigns);
+      setMemberInfo(campaigns.members);
+    }
+  }, [campaigns]);
 
-  const mockMembersData = [
-    {
-      value: 621,
-      title: "Onboarded",
-    },
-    {
-      value: 159,
-      title: "Survey Participants",
-    },
-    {
-      value: 23,
-      title: "Points to be Awarded",
-    },
-  ];
+  console.log("Campaign Info: ", campaignInfo);
+  console.log("Member Info: ", memberInfo);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -55,16 +44,12 @@ export const DashboardPage = () => {
         </div>
 
         <div className="mt-6">
-          {mode === ViewMode.Campaigns && (
-            <>
-              <DashBoardSummary data={mockCampaignsData} />
-            </>
+          {mode === ViewMode.Campaigns && campaignInfo && (
+            <DashBoardSummary data={mapCampaignInfoToSummary(campaignInfo)} />
           )}
 
-          {mode === ViewMode.Members && (
-            <>
-              <DashBoardSummary data={mockMembersData} />
-            </>
+          {mode === ViewMode.Members && memberInfo && (
+            <DashBoardSummary data={mapMemberInfoToSummary(memberInfo)} />
           )}
         </div>
 

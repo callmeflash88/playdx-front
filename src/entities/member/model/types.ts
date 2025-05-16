@@ -1,9 +1,23 @@
 // entities/member/model/types.ts
 
+export interface MemberResponse {
+  data: Member[];
+  pagination: Pagination;
+}
+
 export interface Member {
-  id: string;
-  name: string;
+  id: number;
+  full_name: string;
   email: string;
-  role: string;
-  joinedDate: string;
+  avatar: string;
+  last_login: string; // ISO дата в строке
+  location: string;
+  points: number;
+}
+
+export interface Pagination {
+  page: number;
+  perPage: number;
+  total: number;
+  totalPages: number;
 }

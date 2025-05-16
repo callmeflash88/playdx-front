@@ -1,22 +1,30 @@
+import type { Member } from "../../../entities/member/model/types";
 import type { Column } from "../../../shared/ui/Table/types/types";
 
 export const MEMBERS_DASHBOARD_COLUMN: Column[] = [
   { key: "image", label: "" },
-  { key: "name", label: "Name" },
+  { key: "name", label: "Username" },
   { key: "location", label: "Location" },
-  { key: "age", label: "Age" },
+  // { key: "age", label: "Age" },
   { key: "onboarder", label: "Oboarded At" },
 ];
 
-export const getTableItems = (members: any[]) => {
+export const getTableItems = (members: Member[]) => {
   return members.map((member) => {
     return {
       id: member.id,
-      image: member.image,
-      name: member.username,
-      location: member.country,
-      age: member.age,
-      onboarder: member.lastActive,
+      // image: member.avatar,
+      image: {
+        type: "image",
+        src: `http://3.145.90.25:3100/media/${member.avatar}`,
+        alt: member.full_name,
+        id: member.id,
+        path: member.avatar,
+      },
+      name: member.full_name,
+      location: member.location,
+      // age: member.age,
+      onboarder: member.last_login,
     };
   });
 };
