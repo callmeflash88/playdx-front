@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { TextInput } from "../../../shared/ui/FormField/TextInput";
 import { createSurvey } from "../../../shared/api/surveysApi";
+import { useMutation } from "@tanstack/react-query";
 
 const LABEL_CLASSNAME = "font-bold text-gray-dark text-xl";
 const TEXT_INPUT_CLASSNAME = " py-2";
@@ -54,13 +55,20 @@ export const useCreateCampaignForm = () => {
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: createSurvey,
+    onSuccess: () => {
+      form.reset();
+    },
+  });
+
   const onSubmit = async (data: CreateCampaignFormValues) => {
-    await createSurvey(data); // Ждём завершения
-    form.reset(); // Очищаем форму
+    await mutation.mutateAsync(data);
   };
 
   return {
     form,
     onSubmit,
+    isSubmitting: mutation.isPending, // используем это в компоненте
   };
 };

@@ -15,7 +15,7 @@ interface Props {
 
 export const CreateCampaignModal = ({ onClose }: Props) => {
   const queryClient = useQueryClient();
-  const { form, onSubmit } = useCreateCampaignForm();
+  const { form, onSubmit, isSubmitting } = useCreateCampaignForm();
 
   const handleSubmit = async (data: any) => {
     await onSubmit(data);
@@ -25,16 +25,16 @@ export const CreateCampaignModal = ({ onClose }: Props) => {
 
   return (
     <Modal onClose={onClose} isOpen title="Create New Campaign">
-      <h1>Create campaign</h1>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <RenderFormFields fields={CREATE_CAPAIGN_FORM_FIELDS} />
           <div className="flex justify-center gap-2">
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded"
+              className="px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+              disabled={isSubmitting}
             >
-              Create
+              {isSubmitting ? "Creating..." : "Create"}
             </button>
           </div>
         </form>

@@ -22,9 +22,9 @@ export const getKeyValue = (
       : "border-none";
 
     return (
-      <div className="h-20 w-20">
+      <div className="h-20 w-20 mx-auto ">
         <img
-          className={`h-full w-full object-cover rounded-md border ${borderClass}`}
+          className={`h-full w-full object-cover rounded-full border ${borderClass}`}
           src={value.src}
           alt={value.alt}
         />

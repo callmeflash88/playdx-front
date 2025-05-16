@@ -10,7 +10,7 @@ import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
 import { useDashboardViewModel } from "./model/useDashboardViewModel";
 
 export const DashboardPage = () => {
-  const { mode, summaryData } = useDashboardViewModel();
+  const { mode, summaryData, isLoading } = useDashboardViewModel();
 
   const renderHeaderControls = () => {
     switch (mode) {
@@ -43,7 +43,7 @@ export const DashboardPage = () => {
         </div>
 
         <div className="mt-6">
-          <DashBoardSummary data={summaryData} />
+          <DashBoardSummary data={summaryData} isLoading={isLoading} />
         </div>
 
         <div className="bg-white shadow rounded-lg overflow-hidden">

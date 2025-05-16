@@ -16,7 +16,7 @@ export const getTableItems = (members: Member[]) => {
       // image: member.avatar,
       image: {
         type: "image",
-        src: `https://cdn.discordapp.com/avatars/${member.id}/${member.avatar}.png`,
+        src: `https://cdn.discordapp.com/avatars/${member.discord_id}/${member.avatar}.png`,
         alt: member.full_name,
         id: member.id,
         path: member.avatar,

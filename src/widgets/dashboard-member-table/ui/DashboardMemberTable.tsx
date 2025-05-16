@@ -7,9 +7,10 @@ import type { Row } from "../../../shared/ui/Table/types/types";
 import { MemberTable } from "../../../features/member-table/ui/MemberTable";
 import { useMembers } from "../../../entities/member/model/useMembers";
 import { useSearchStore } from "../../../features/search-members/model/store";
+import { TableSkeleton } from "../../../shared/ui/TableSkeleton";
 
 export const DashboardMemberTable: FC = () => {
-  const { data } = useMembers();
+  const { data, isLoading } = useMembers();
   const query = useSearchStore((state) => state.query.toLowerCase());
 
   const items = useMemo(() => {
@@ -22,6 +23,10 @@ export const DashboardMemberTable: FC = () => {
       return values.includes(query);
     });
   }, [data, query]);
+
+  if (isLoading) {
+    return <TableSkeleton rows={6} columns={4} />;
+  }
 
   return <MemberTable members={items} columns={MEMBERS_DASHBOARD_COLUMN} />;
 };

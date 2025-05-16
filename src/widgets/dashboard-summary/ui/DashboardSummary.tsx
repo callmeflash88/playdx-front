@@ -1,11 +1,13 @@
 import type { FC } from "react";
 import { InfoCard } from "../../../shared/ui/InfoCard";
+import { InfoCardSkeleton } from "../../../shared/ui/InforCardSkeleton";
 
 interface Props {
-  data: {
+  data?: {
     value: number;
     title: string;
   }[];
+  isLoading?: boolean;
 }
 
 const getGridColsClass = (cols: number) => {
@@ -23,14 +25,15 @@ const getGridColsClass = (cols: number) => {
   }
 };
 
-export const DashBoardSummary: FC<Props> = ({ data }) => {
-  const layout = getGridColsClass(data.length);
+export const DashBoardSummary: FC<Props> = ({ data = [], isLoading }) => {
+  const layout = getGridColsClass(data.length || 4);
+  const content = isLoading
+    ? Array.from({ length: 4 }).map((_, idx) => <InfoCardSkeleton key={idx} />)
+    : data.map((item, idx) => <InfoCard key={idx} {...item} />);
 
   return (
     <div className={`grid grid-cols-1 gap-5 sm:grid-cols-2 ${layout} mb-8`}>
-      {data.map((item, idx) => (
-        <InfoCard key={idx} {...item} />
-      ))}
+      {content}
     </div>
   );
 };

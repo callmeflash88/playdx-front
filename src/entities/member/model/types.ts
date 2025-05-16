@@ -13,6 +13,7 @@ export interface Member {
   last_login: string; // ISO дата в строке
   location: string;
   points: number;
+  discord_id: string;
 }
 
 export interface Pagination {

@@ -9,9 +9,10 @@ import { TableBody } from "../../../shared/ui/Table/TableBody";
 import { NewCampaignButton } from "./NewCampaignButton";
 import { useSurveys } from "../../../entities/surveys/model/useSurveys";
 import type { Row } from "../../../shared/ui/Table/types/types";
+import { TableSkeleton } from "../../../shared/ui/TableSkeleton";
 
 export const CampaignsTable: FC = () => {
-  const { data } = useSurveys();
+  const { data, isLoading } = useSurveys();
 
   const tableItems = getTableItems(data?.data || []) as unknown as Row[];
 
@@ -21,10 +22,14 @@ export const CampaignsTable: FC = () => {
         <h2 className="text-lg font-medium text-gray-900">Campaigns</h2>
         <NewCampaignButton />
       </div>
-      <Table>
-        <TableHeader columns={CAMPAIGNS_DASHBOARD_COLUMN} />
-        <TableBody items={tableItems} columns={CAMPAIGNS_DASHBOARD_COLUMN} />
-      </Table>
+      {isLoading ? (
+        <TableSkeleton rows={6} columns={4} />
+      ) : (
+        <Table>
+          <TableHeader columns={CAMPAIGNS_DASHBOARD_COLUMN} />
+          <TableBody items={tableItems} columns={CAMPAIGNS_DASHBOARD_COLUMN} />
+        </Table>
+      )}
     </div>
   );
 };
