@@ -5,7 +5,7 @@ interface Props {
 }
 export const TrophyPoint: FC<Props> = ({ points }) => {
   return (
-    <div className=" w-full flex items-center gap-1">
+    <div className=" w-full flex justify-center items-center gap-1">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-4 h-4 text-yellow-500"

@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Table: FC<Props> = ({ className, children, ariaLabel }) => (
-  <div className={cn("mt-10", className)}>
+  <div className={cn("mt-5", className)}>
     <table aria-label={ariaLabel} className="min-w-full">
       {children}
     </table>
