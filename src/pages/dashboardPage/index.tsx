@@ -7,7 +7,7 @@ import { ViewModeToggle } from "../../features/toggle-view-mode/ui/ViewModeToggl
 import { DashBoardSummary } from "../../widgets/dashboard-summary/ui/DashboardSummary";
 import UserAvatar from "../../widgets/user-avatar/ui/UserAvatar";
 import { DashboardMemberTable } from "../../widgets/dashboard-member-table/ui/DashboardMemberTable";
-import { useCampaigns } from "../../entities/campaign/model/useCampaigns";
+
 import { useEffect, useState } from "react";
 import type {
   CampaignInfo,
@@ -17,12 +17,13 @@ import {
   mapCampaignInfoToSummary,
   mapMemberInfoToSummary,
 } from "../../shared/lib/mapCampaignInfoToSummary";
+import { useDashboard } from "../../entities/dashboard/model/useDashboard";
 
 export const DashboardPage = () => {
   const mode = useToggleViewModeStore((state) => state.mode);
   const [campaignInfo, setCampaignsInfo] = useState<CampaignInfo>();
   const [memberInfo, setMemberInfo] = useState<MemberInfo>();
-  const { data: campaigns } = useCampaigns();
+  const { data: campaigns } = useDashboard();
 
   useEffect(() => {
     if (campaigns) {
@@ -30,9 +31,6 @@ export const DashboardPage = () => {
       setMemberInfo(campaigns.members);
     }
   }, [campaigns]);
-
-  console.log("Campaign Info: ", campaignInfo);
-  console.log("Member Info: ", memberInfo);
 
   return (
     <div className="min-h-screen bg-gray-50">

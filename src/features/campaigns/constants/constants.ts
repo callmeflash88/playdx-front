@@ -1,3 +1,4 @@
+import type { Survey } from "../../../entities/surveys/model/types";
 import type { Column } from "../../../shared/ui/Table/types/types";
 
 export const CAMPAIGNS_DASHBOARD_COLUMN: Column[] = [
@@ -8,15 +9,15 @@ export const CAMPAIGNS_DASHBOARD_COLUMN: Column[] = [
   { key: "pointsAwarded", label: "Points Awarded" },
 ];
 
-export const getTableItems = (campaigns: any[]) => {
+export const getTableItems = (campaigns: Survey[]) => {
   return campaigns.map((campaign) => {
     return {
       id: campaign.id,
       title: campaign.title,
-      appId: campaign.appId,
+      appId: campaign.intellisurvey_id,
       completions: campaign.completions,
-      pointsToBeAwarded: campaign.pointsToBeAwarded,
-      pointsAwarded: campaign.pointsAwarded,
+      pointsToBeAwarded: campaign.points_to_be_awarded,
+      pointsAwarded: campaign.points_awarded,
     };
   });
 };

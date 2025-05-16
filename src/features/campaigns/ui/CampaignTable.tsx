@@ -7,40 +7,13 @@ import { Table } from "../../../shared/ui/Table/Table";
 import { TableHeader } from "../../../shared/ui/Table/TabeHeader";
 import { TableBody } from "../../../shared/ui/Table/TableBody";
 import { NewCampaignButton } from "./NewCampaignButton";
+import { useSurveys } from "../../../entities/surveys/model/useSurveys";
+import type { Row } from "../../../shared/ui/Table/types/types";
 
-interface Props {
-  campaigns: any[];
-}
+export const CampaignsTable: FC = () => {
+  const { data } = useSurveys();
 
-export const CampaignsTable: FC<Props> = ({ campaigns }) => {
-  if (campaigns) {
-    console.log("Campaigns:", campaigns);
-  }
-  const mockCampaigns = [
-    {
-      title: "Gaming Experience Survey",
-      appId: "gaming_exp_2024",
-      completions: 120,
-      pointsToBeAwarded: 2920,
-      pointsAwarded: 120,
-    },
-    {
-      title: "Mobile Gaming Habits",
-      appId: "mobile_gaming_24",
-      completions: 120,
-      pointsToBeAwarded: 2920,
-      pointsAwarded: 120,
-    },
-    {
-      title: "Esports Viewership",
-      appId: "esports_view_24",
-      completions: 120,
-      pointsToBeAwarded: 2920,
-      pointsAwarded: 120,
-    },
-  ];
-
-  const tableItems = getTableItems(mockCampaigns);
+  const tableItems = getTableItems(data?.data || []) as unknown as Row[];
 
   return (
     <div className="bg-white overflow-hidden shadow rounded-lg flex flex-col">
