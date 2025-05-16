@@ -2,10 +2,10 @@ import type { Pagination } from "../../member/model/types";
 
 export interface Survey {
   completions: number;
-  created_at: string; // ISO дата в формате строки
+  created_at: string; // ISO
   id: number;
   intellisurvey_id: string;
-  last_rewards: null | any; // пока null, можно уточнить тип, если знаешь
+  last_rewards: null | any; //  null,   ,
   points_awarded: number;
   points_to_be_awarded: number;
   reward_value: number;

@@ -36,7 +36,7 @@ export const CREATE_CAPAIGN_FORM_FIELDS = [
   },
 ];
 
-// Определяем схему валидации с помощью Zod
+//      Zod
 const CreateCampaignSchema = z.object({
   title: z.string().min(1, "Campaign name is required"),
   intellisurvey_id: z.string().min(1, "Intellisurvey is required"),
@@ -69,6 +69,6 @@ export const useCreateCampaignForm = () => {
   return {
     form,
     onSubmit,
-    isSubmitting: mutation.isPending, // используем это в компоненте
+    isSubmitting: mutation.isPending, //
   };
 };

@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const auth = useAuth();
 
   if (auth.isLoading) {
-    return <div>Загрузка...</div>;
+    return <div>Loading...</div>;
   }
 
   return <>{children}</>;

@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         ),
       },
       //   { path: "surveys", element: <SurveysPage /> },
-      // добавь остальные страницы по мере разработки
+      //
     ],
   },
   { path: "*", element: <div>404</div> },

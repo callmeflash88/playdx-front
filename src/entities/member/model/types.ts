@@ -10,7 +10,7 @@ export interface Member {
   full_name: string;
   email: string;
   avatar: string;
-  last_login: string; // ISO дата в строке
+  last_login: string; // ISO
   location: string;
   points: number;
   discord_id: string;

@@ -14,11 +14,11 @@ export const useAuth = () => {
   const query = useQuery({
     queryKey: ["license"],
     queryFn: getLicense,
-    enabled: !!token, // не запускать, если нет токена
+    enabled: !!token, //  ,
     retry: false,
   });
 
-  // редирект если токена нет или ошибка
+  //
   useEffect(() => {
     if (!token || query.isError) {
       const redirectUrl = encodeURIComponent(window.location.href);
