@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/16/solid";
 
 export const sidebarItems = [
-  { label: "Dashboard", to: "/dashboard", icon: HomeIcon },
+  { label: "Dashboard", to: "/", icon: HomeIcon },
   { label: "Surveys", to: "/surveys", icon: ClipboardDocumentListIcon },
   { label: "Users", to: "/users", icon: UsersIcon },
   { label: "Rewards", to: "/rewards", icon: GiftIcon },

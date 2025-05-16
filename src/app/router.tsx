@@ -3,6 +3,7 @@ import { SideBar } from "../widgets/SideBar/SideBar";
 import { DashboardPage } from "../pages/dashboardPage";
 import { SurveysPage } from "../pages/surveys";
 import { UsersPage } from "../pages/users/Users";
+import { ProtectedRoute } from "./ProtectedRoute";
 // import { SideBar } from "@widgets/SideBar/SideBar";
 
 const Layout = () => (
@@ -23,9 +24,30 @@ export const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      { path: "", element: <DashboardPage /> },
-      { path: "surveys", element: <SurveysPage /> },
-      { path: "users", element: <UsersPage /> },
+      {
+        path: "",
+        element: (
+          // <ProtectedRoute>
+          <DashboardPage />
+          // </ProtectedRoute>
+        ),
+      },
+      {
+        path: "surveys",
+        element: (
+          <ProtectedRoute>
+            <SurveysPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <ProtectedRoute>
+            <UsersPage />
+          </ProtectedRoute>
+        ),
+      },
       //   { path: "surveys", element: <SurveysPage /> },
       // добавь остальные страницы по мере разработки
     ],
