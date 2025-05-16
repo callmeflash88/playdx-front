@@ -7,19 +7,27 @@ import {
   CREATE_CAPAIGN_FORM_FIELDS,
   useCreateCampaignForm,
 } from "../model/useCreateCampaignModal";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   onClose: () => void;
 }
 
 export const CreateCampaignModal = ({ onClose }: Props) => {
+  const queryClient = useQueryClient();
   const { form, onSubmit } = useCreateCampaignForm();
+
+  const handleSubmit = async (data: any) => {
+    await onSubmit(data);
+    onClose();
+    queryClient.invalidateQueries({ queryKey: ["surveys"] });
+  };
 
   return (
     <Modal onClose={onClose} isOpen title="Create New Campaign">
       <h1>Create campaign</h1>
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <RenderFormFields fields={CREATE_CAPAIGN_FORM_FIELDS} />
           <div className="flex justify-center gap-2">
             <button

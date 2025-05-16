@@ -17,3 +17,9 @@ export interface SurveyResponse {
   data: Survey[];
   pagination: Pagination;
 }
+
+export interface CreateSurveyRequest {
+  title: string;
+  intellisurvey_id: string;
+  reward_value: string;
+}

@@ -3,13 +3,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { TextInput } from "../../../shared/ui/FormField/TextInput";
+import { createSurvey } from "../../../shared/api/surveysApi";
 
 const LABEL_CLASSNAME = "font-bold text-gray-dark text-xl";
 const TEXT_INPUT_CLASSNAME = " py-2";
 
 export const CREATE_CAPAIGN_FORM_FIELDS = [
   {
-    name: "name",
+    name: "title",
     label: "Campaign name",
     placeholder: "",
     component: TextInput,
@@ -17,7 +18,7 @@ export const CREATE_CAPAIGN_FORM_FIELDS = [
     fieldClassName: TEXT_INPUT_CLASSNAME,
   },
   {
-    name: "appId",
+    name: "intellisurvey_id",
     label: "Intellisurvey ID",
     placeholder: "",
     component: TextInput,
@@ -25,7 +26,7 @@ export const CREATE_CAPAIGN_FORM_FIELDS = [
     fieldClassName: TEXT_INPUT_CLASSNAME,
   },
   {
-    name: "points",
+    name: "reward_value",
     label: "Points Granted",
     placeholder: "",
     component: TextInput,
@@ -37,8 +38,8 @@ export const CREATE_CAPAIGN_FORM_FIELDS = [
 // Определяем схему валидации с помощью Zod
 const CreateCampaignSchema = z.object({
   title: z.string().min(1, "Campaign name is required"),
-  appId: z.string().min(1, "Intellisurvey is required"),
-  pointsToBeAwarded: z.number().min(1, "Points must be positive"),
+  intellisurvey_id: z.string().min(1, "Intellisurvey is required"),
+  reward_value: z.string().min(1, "Points must be positive"),
 });
 
 export type CreateCampaignFormValues = z.infer<typeof CreateCampaignSchema>;
@@ -48,14 +49,14 @@ export const useCreateCampaignForm = () => {
     resolver: zodResolver(CreateCampaignSchema),
     defaultValues: {
       title: "",
-      appId: "",
-      pointsToBeAwarded: 0,
+      intellisurvey_id: "",
+      reward_value: "",
     },
   });
 
-  const onSubmit = (data: CreateCampaignFormValues) => {
-    console.log("Create campaign data:", data);
-    // TODO: call mutation or API here
+  const onSubmit = async (data: CreateCampaignFormValues) => {
+    await createSurvey(data); // Ждём завершения
+    form.reset(); // Очищаем форму
   };
 
   return {
